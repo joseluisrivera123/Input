@@ -1,0 +1,179 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<ui:composition template="./Plantilla.xhtml"
+    xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:fn="http://java.sun.com/jsp/jstl/functions">
+    <ui:define name="content">
+    <h:head>
+        <title>Compra</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    </h:head>
+    <h:body>
+        <p:growl id="mensaje" severity="info, error" showDetail="true" showSummary="true" />
+        <p:spacer height="20 px"/>
+        <h3>Registro de Proovedor</h3>
+        <p:spacer height="20 px"/>
+        <h:form id="tblProveedor">
+            <p:panelGrid columns="4" id="cabeFactura" layout="grid" columnClasses="p-col-12 p-md-3 p-xl-2, p-col-12 p-md-9 p-xl-4, p-col-12 p-md-3 p-xl-2, p-col-12 p-md-9 p-xl-4" styleClass="customPanelGrid" contentStyleClass="ui-fluid">
+                <p:outputLabel value="Razon Social" />
+
+                <p:autoComplete id="AutocompletarpROVEEDOR" value="#{compraC.proveedor.razonSocial}" completeMethod="#{compraC.autocompleteProveedor}">
+                    <p:keyFilter regEx="/[a-z-A-Z- ]/"/>
+                    <p:ajax event="itemSelect" listener="#{compraC.filtrar()}" update="txtNomEmp  txtCelar txtDireccion"/>
+                </p:autoComplete>
+
+                <p:outputLabel value="Ruc"/>
+                <p:outputLabel id="txtNomEmp" value="#{compraC.proveedor.ruc}"/>
+                <p:outputLabel value="Celular"/>
+                <p:outputLabel id="txtCelar" value="#{compraC.proveedor.celularProveedor}"/>
+                <p:outputLabel value="Direccion"/>
+                <p:outputLabel id="txtDireccion" value="#{compraC.proveedor.direccionProveedor}"/>
+                <p:outputLabel   value="Fecha de compra" />
+                <h:outputText value="#{compraC.compra.fecha}">
+                    <f:convertDateTime pattern="dd-MM-yyyy" locale="es"/>
+                </h:outputText>
+            </p:panelGrid>
+            <p:separator/>
+            <p:spacer width="30"/>
+            <h3>Registro de Insumos</h3>
+            <p:spacer height="20 px"/>
+            <p:commandButton value="Nueva Insumo" icon="pi pi-plus" oncomplete="PF('dlgProductos').show()" update="Registro_Producto"/>               
+
+            <p:separator/>
+
+            <p:panelGrid columns="4" id="detFactura" layout="grid" columnClasses="p-col-12 p-md-3 p-xl-2, p-col-12 p-md-9 p-xl-4, p-col-12 p-md-3 p-xl-2, p-col-12 p-md-9 p-xl-4" styleClass="customPanelGrid" contentStyleClass="ui-fluid">
+
+                <p:outputLabel value="Nombre del Insumo"/>
+                <p:autoComplete id="autoProducto" value="#{compraC.insumo.nombredeinsumo}" completeMethod="#{compraC.autocompletePrueba}" scrollHeight="250">
+                    <p:ajax event="itemSelect" listener="#{compraC.buscarInsumos()}" update="mensaje txtStock txtPrecio"/>
+                </p:autoComplete>
+
+                <p:outputLabel value="Stock Disponible"/>
+                <p:outputLabel id="txtStock" value="#{compraC.insumo.stockdeinsumo}"/>
+
+                <p:outputLabel value="Precio de Compra"/>
+                <p:outputLabel id="txtPrecio" value="#{compraC.insumo.preciodeinsumo}">
+                    <f:convertNumber type="currency" pattern="¤#0.00" currencySymbol="S/. " />
+                </p:outputLabel>
+
+                <p:outputLabel value="Cantidad"/>
+                <p:inputText id="txtCantidadCompra" value="#{compraC.insumo.cantidaddeinsumo}" required="true">
+                    <p:keyFilter mask="num"/>
+                </p:inputText>
+                <p:outputLabel value="Tipo de pago"/>
+                <p:selectOneMenu id="tipopago" styleClass="ticket" style=" width: 225px"
+                                 value="#{compraC.compra.tipoPago}" required="true" requiredMessage="Seleccione el tipo de pago">
+                    <f:selectItem noSelectionOption="true"
+                                  itemLabel="Seleccionar"  />
+                    <f:selectItem itemLabel="Efectivo" itemValue="E"/>
+                    <f:selectItem itemLabel="Tarjeta" itemValue="T" />
+                </p:selectOneMenu>
+            </p:panelGrid>
+            <p:separator/>
+            <p:spacer width="20"/>
+            <p:commandButton value="Agregar Insumo" icon="pi pi-plus" actionListener="#{compraC.insumoNull()}" update="mensaje formTablaPro:tablaCompra txtCantidadCompra txtStock txtPrecio autoProducto formTablaPro:txtTotal"/>
+            <p:spacer width="20" />
+            <p:commandButton value=" Comprar"  actionListener="#{compraC.registroCompra()}" oncomplete="PF('reporte').show()"  update="formTablaPro:tablaCompra tblProveedor:cabeFactura tblProveedor:detFactura formTablaPro:txtTotal"/>
+            <p:spacer width="420" />
+            <p:commandButton value="Cancelar Compra" icon="pi pi-trash" actionListener="#{compraC.limpiar()}" update="formTablaPro:tablaCompra tblProveedor:cabeFactura tblProveedor:detFactura formTablaPro:txtTotal"/>
+            <p:separator/>
+
+        </h:form>
+
+
+        <p:spacer height="20 px"/>
+        <h:form id="formTablaPro">            
+            <p:dataTable id="tablaCompra" var="tblCompra" value="#{compraC.listDetalle}" editable="true" editMode="cell"
+                         editInitEvent="dblclick" style="margin-bottom:20px">
+                <p:ajax event="cellEdit" listener="#{compraC.actualizarTablaTemporal()}" update="formTablaPro:txtTotal :formTablaPro:tablaCompra "/>
+
+                <p:column headerText="Nro">
+                    <h:outputText value="#{tblCompra.idInsumo}"  />
+                </p:column>                
+                <p:column headerText="Insumo" filterBy="#{tblCompra.nombreCom}">
+                    <h:outputText value="#{tblCompra.nombreCom}"/>
+                </p:column>
+                <p:column headerText="Cantidad">
+                    <p:cellEditor>
+                        <f:facet name="output">
+                            <h:outputText value="#{tblCompra.cantidad}"/>
+                        </f:facet>
+                        <f:facet name="input">
+                            <p:inputText value="#{tblCompra.nuevaCantidad}" style="width:100%" label="Cantidad"/>
+                        </f:facet>
+                    </p:cellEditor>
+                </p:column>
+                <p:column headerText="Precio/Compra">
+                    <h:outputText value="#{tblCompra.precio}">
+                        <f:convertNumber type="currency" pattern="¤#0.00" currencySymbol="S/. " />
+                    </h:outputText>
+                </p:column>
+                <p:column headerText="Subtotal">
+                    <h:outputText value="#{tblCompra.subtotalCompra}" id="clmSubtotal" >
+                        <f:convertNumber type="currency" pattern="¤#0.00" currencySymbol="S/. " />
+                    </h:outputText>
+                </p:column>
+                <p:column headerText="Acciones">
+                    <p:commandButton icon="pi pi-trash" actionListener="#{compraC.eliminarInsumo(tblCompra.idInsumo)}" update="mensaje formTablaPro:tablaCompra formTablaPro:txtTotal"/>
+                </p:column>
+
+            </p:dataTable>
+            <div style="font-weight: bold; float: right">
+                <h:outputText value="Total: "/>
+                <h:outputText value="#{compraC.total}" id="txtTotal">
+                    <f:convertNumber type="currency" pattern="¤#0.00" currencySymbol="S/. " />
+                </h:outputText>
+            </div>
+
+        </h:form>
+        <p:dialog header="Nuevo Producto" id="Productos" widgetVar="dlgProductos" width="800" showEffect="fade" modal="true">
+            <h:form id="Registro_Producto">
+                <p:panelGrid columns="4">
+
+                    <h:outputText value="Codigo del Insumo"/>
+                    <p:inputText value="#{InsumoC.insumo.idinsumo}" id="Codigo" required="true">
+                        <p:keyFilter regEx="/^[a-zA-Z0-9]*$/"/>
+                    </p:inputText>
+
+
+                    <h:outputLabel value="Nombre del Insumo"/>    
+                    <p:inputText value="#{InsumoC.insumo.nombredeinsumo}" id="Nombre" required="true">
+                        <p:keyFilter regEx="/[a-z-A-Z- ]/"/>
+                    </p:inputText>
+
+                    <h:outputText value="Descripcion"/>
+                    <p:inputText value="#{InsumoC.insumo.detalledeinsumo}" id="Descripcion" required="true">
+                        <p:keyFilter regEx="/[a-zA-Z0-9-. ]/"/>
+                    </p:inputText>
+
+
+                    <h:outputText value="Precio de Compra"/>
+                    <p:inputText value="#{InsumoC.insumo.preciodeinsumo}" id="PrecioCompra" required="true">
+                        <p:keyFilter regEx="/^[0-9.]*$/"/>
+                        <f:convertNumber currencySymbol ="$" type ="currency"/>
+                    </p:inputText>
+
+
+                    <h:outputText value="Precio de Venta"/>
+                    <p:inputText value="#{InsumoC.insumo.preciodeinsumo}" id="PrecioVenta" required="true">
+                        <p:keyFilter regEx="/^[0-9.]*$/"/>
+                        <f:convertNumber currencySymbol ="$" type ="currency"/>
+                    </p:inputText>
+
+                    <h:outputText value="Stock"/>
+                    <p:inputText value="#{InsumoC.insumo.stockdeinsumo}" id="Stock" required="true">
+                        <p:keyFilter regEx="/[0-9]/"/>
+                    </p:inputText>
+
+                </p:panelGrid>
+                <p:separator/>
+                <p:commandButton id="btnRegistrar" value="Registrar" action="#{InsumoC.registrar()}" update="mensaje Registro_Producto" icon="pi pi-save"/>
+            </h:form>
+        </p:dialog>
+    </h:body>
+        </ui:define>
+</ui:composition>

@@ -1,0 +1,99 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:fn="http://java.sun.com/jsp/jstl/functions">
+    <h:head>
+        <title>Input</title>
+    </h:head>
+    <h:body >
+
+        <center>
+            <h1>Temario 02</h1>
+            <h2>Input : InputMask,Slider,Knob y Spinner</h2>
+            <p:spacer height="3"/> 
+
+
+            <h:form id="Regis">
+                <h2>InputMask</h2>
+                <p:panelGrid columns="3" >
+
+                    <div>
+                        <p:outputLabel  value="Fecha" />
+                        <p:inputMask id="Fecha" value="#{personaC.persona.fechanacimiento}" mask="99/99/99999" />
+                    </div>
+
+                    <div >
+                        <p:outputLabel  value="Telefono" />
+                        <p:inputMask id="Telefono" value="#{personaC.persona.celular}" mask="(99) 999-999-999" validateMask="true" />
+                    </div>
+
+                    <div >
+                        <p:outputLabel  value="SeguroSocial" />
+                        <p:inputMask id="SeguroSocial" value="#{personaC.persona.dni}" mask="999-99-9999" validateMask="true" />
+                    </div>
+                </p:panelGrid>
+                <h2>Slider</h2>
+                <p:panelGrid columns="3" >
+
+                    <h5 >Rango Minimo</h5>
+                    <h:panelGrid columns="1" style="margin-bottom: 10px">
+                        <p:inputText id="sliderTxtMin" value="#{productoC.producto.precio}"/>
+                        <p:slider for="sliderTxtMin"/>
+                    </h:panelGrid>
+
+                    <h5 >Rango Maximo</h5>
+                    <h:panelGrid columns="1" style="margin-bottom: 10px">
+                        <p:inputText id="sliderTxtMax" value="#{productoC.producto.precio}"/>
+                        <p:slider for="sliderTxtMax" range="max"/>
+                    </h:panelGrid>
+
+                    <h5>Range Slider</h5>
+                    <h:panelGrid columns="1" style="margin-bottom: 10px">
+                        <h:outputText id="displayRange" value="Desde #{productoC.producto.precio} hasta #{productoC.producto.precio}"/>
+                        <p:slider for="precio1,precio2" display="displayRange" style="width: 400px" range="true"
+                                  displayTemplate="Between {min} and {max}"/>
+                    </h:panelGrid>
+                    <h:inputHidden id="precio1" value="#{productoC.producto.precio}"/>
+                    <h:inputHidden id="precio2" value="#{productoC.producto.precio}"/>
+
+
+                </p:panelGrid>
+                <h2>Knob</h2>
+                <p:panelGrid columns="3" >
+                    <div>
+                        <h5>Rango</h5>
+                        <div >
+                            <p:knob labelTemplate="{value}%" value="40"/>
+                        </div>
+                    </div>
+
+                </p:panelGrid>
+                <h2>Spinner</h2>
+                <p:panelGrid columns="3" >
+                    <div >
+                        <p:outputLabel  value="Cantidad de productos"/>
+                        <p:spinner id="Cantidad" value="#{productoC.producto.nombre}" min="0" max="100"/>
+                    </div>
+                    <div >
+                        <p:outputLabel  value="Agregar o quitar productos"/>
+                        <p:spinner id="horizontalAfter" value="#{productoC.producto.nombre}" buttons="horizontal-after"
+                                   upButtonStyleClass="ui-button-success" downButtonStyleClass="ui-button-danger"/>
+                    </div>    
+
+                    <div >
+                        <p:outputLabel  value="Precio"/>
+                        <p:spinner id="Precio" value="#{productoC.producto.precio}" prefix="S/." min="0"/>
+                    </div>
+
+                </p:panelGrid>
+               
+            </h:form>
+        </center>
+    </h:body>
+    <script src="resource/js/validaciones.js" type="text/javascript"></script>
+    <script src="resource/js/ValApellido.js" type="text/javascript"></script>
+</html>

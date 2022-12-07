@@ -1,0 +1,216 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.19.1.final using JasperReports Library version 6.19.1-867c00bf88cd4d784d404379d6c05e1b419e8a4c  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="ClienteReporteJR" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="94569908-1613-4974-a6bd-4d1bc92fe357">
+	<property name="com.jaspersoft.studio.data.sql.tables">
+		<![CDATA[IkNMSUVOVEUiIEFTICwxMDEsMTE1LGNhNjcxN2QyLTliNmMtNDgwMS05ZmFiLTg3MTgzZGI2NGQ1
+MDs=]]>
+	</property>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="sqlserver_dbVInos"/>
+	<queryString language="SQL">
+		<![CDATA[SELECT "NOMCLI",
+	"APECLI",
+	"DNICLI",
+	"EMAILCLI",
+	"CELCLI"
+FROM "CLIENTE"]]>
+	</queryString>
+	<field name="NOMCLI" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="NOMCLI"/>
+		<property name="com.jaspersoft.studio.field.label" value="NOMCLI"/>
+	</field>
+	<field name="APECLI" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="APECLI"/>
+		<property name="com.jaspersoft.studio.field.label" value="APECLI"/>
+	</field>
+	<field name="DNICLI" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="DNICLI"/>
+		<property name="com.jaspersoft.studio.field.label" value="DNICLI"/>
+	</field>
+	<field name="EMAILCLI" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="EMAILCLI"/>
+		<property name="com.jaspersoft.studio.field.label" value="EMAILCLI"/>
+	</field>
+	<field name="CELCLI" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="CELCLI"/>
+		<property name="com.jaspersoft.studio.field.label" value="CELCLI"/>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="61" splitType="Stretch">
+			<textField pattern="MMMM d, yyyy">
+				<reportElement x="449" y="3" width="100" height="16" uuid="ace9d1f3-7c89-4abf-8840-5a90f42be30a"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="83" y="0" width="182" height="20" uuid="35ad7820-caa1-446f-b24e-f71e1f08e896"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[De : Huapaya David Marleny Gloria]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="449" y="23" width="100" height="14" uuid="70dece24-5d5d-4110-aa47-63e190d47cdd"/>
+				<text><![CDATA[934692267]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="331" y="3" width="118" height="16" uuid="8b2d0f68-ecbc-40c9-8cba-f8ffc9810e6f"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Fecha del reporte :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="83" y="20" width="182" height="20" uuid="ae6d2057-0a9e-4b7c-b314-d5ca25cdc5b6"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[Venta de todo tipo de vino]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="27" y="41" width="304" height="20" uuid="6df1d0ab-711f-42e6-93c5-99f22423fd69"/>
+				<textElement>
+					<font size="11" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Fnd. Santa Elvira Almenares S/N Nuevo Imperial - Cañete - Lima]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="329" y="21" width="138" height="20" uuid="4126df55-f869-46ed-9e3b-a089eac7ef73"/>
+				<textElement textAlignment="Left">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[                   Celular  : ]]></text>
+			</staticText>
+			<line>
+				<reportElement x="1" y="60" width="553" height="1" uuid="bd9d16fa-4fe8-470e-bc2f-801cd44ab709"/>
+			</line>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="35" splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="77" splitType="Stretch">
+			<staticText>
+				<reportElement x="3" y="47" width="110" height="30" forecolor="#050505" uuid="887efc3e-4d1d-438d-a14d-15343f4ce5fe">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="9e2ddd52-e9bf-4822-aa12-344b281e06cb"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Nombre]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="210" y="47" width="99" height="30" forecolor="#050505" uuid="92d311e2-f473-49de-8d43-fc6ecfd3e2aa">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="6cd6def3-e89b-4665-ac4a-90b0fad61cc5"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[DNI]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="113" y="47" width="96" height="30" forecolor="#050505" uuid="5776593e-fba0-4207-8f8f-87137ce2f730">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="dd96fb5e-5b22-4da5-b327-9f6286cda9eb"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Apellido]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="310" y="47" width="86" height="30" forecolor="#050505" uuid="56a13e9d-9cb7-4792-adfa-dfb8af87ece8">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="5366785a-9b89-468c-9bf9-da03211fbd53"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Celular]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="396" y="47" width="158" height="30" forecolor="#050505" uuid="ac07aa79-b89e-4503-ae96-9887a77e0d75">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="7380c464-9782-4ee2-ba1e-d6ae9afe083c"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Correo electronico]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement x="1" y="4" width="553" height="30" backcolor="#407DB3" uuid="ab2dd55b-40a2-4354-bf0b-a8698990f4e5"/>
+				<graphicElement>
+					<pen lineColor="#FFFFFF"/>
+				</graphicElement>
+			</rectangle>
+			<staticText>
+				<reportElement x="9" y="4" width="546" height="30" forecolor="#FCFCFC" backcolor="#FFFFFF" uuid="a700740b-a86e-47cc-a112-478577fe1bf8"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="20" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Reporte de Cliente ]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="30" splitType="Stretch">
+			<textField>
+				<reportElement x="1" y="0" width="111" height="30" uuid="e658b823-ca11-40ea-978d-8c74341ee7e6">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="dc2b4229-6164-47f8-8335-ac7c55588e27"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{NOMCLI}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="112" y="0" width="98" height="30" uuid="ea788603-f576-4700-9103-9ca54385efa2">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="002e4a18-bdd2-4e5f-9309-3f719b2e232a"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{APECLI}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="211" y="0" width="99" height="30" uuid="027656e4-d0a7-4281-816e-023fdfaa4193">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="ee7e4ebb-4c29-4b3a-8962-7ab0f2917aff"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{DNICLI}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="396" y="0" width="158" height="30" uuid="793c71d4-1b48-46df-a8c1-eecea82d80b5">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="b5ec0669-bbba-4d19-871a-436dbe63252b"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{EMAILCLI}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="310" y="0" width="86" height="30" uuid="8213179a-ed0d-475d-94b3-1e927b9e2a83">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="e23f9421-bed6-40e4-be7d-68cb55bada97"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{CELCLI}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<pageFooter>
+		<band height="30" splitType="Stretch">
+			<textField pattern="MMM d, yyyy h:mm:ss a">
+				<reportElement x="420" y="0" width="134" height="30" uuid="cbecc132-e6bb-4d1f-a6ca-2b9ef1a243cc"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="237" y="0" width="100" height="30" uuid="e3fea4ea-12f1-4c53-8c55-e05bfdea5346"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="1" y="0" width="232" height="30" uuid="f38d297b-ff2c-4cd3-8cd2-a2e1756b828a"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Elaborado por Jesus Ignacio , Sulca Ciprian]]></text>
+			</staticText>
+		</band>
+	</pageFooter>
+</jasperReport>

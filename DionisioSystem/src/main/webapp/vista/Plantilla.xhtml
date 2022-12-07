@@ -1,0 +1,572 @@
+<?xml version='1.0' encoding='UTF-8' ?> 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="es" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+
+    <h:head>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <link rel="icon" href="resources/freya-layout/images/favicon.ico" type="image/x-icon" />
+        <link type="text/css" rel="stylesheet" href="#{request.contextPath}/faces/resources/theme.css" />
+        <link type="text/css" rel="stylesheet" href="#{request.contextPath}/faces/resources/primeicons/primeicons.css" />
+        <link type="text/css" rel="stylesheet" href="#{request.contextPath}/faces/resources/components.css" />
+        <script type="text/javascript" src="#{request.contextPath}/faces/resources/core.js"></script>
+        <script type="text/javascript" src="#{request.contextPath}/faces/resources/components.js"></script>
+        <script type="text/javascript" src="#{request.contextPath}/faces/resources/touch/touchswipe.js"></script>
+        <link type="text/css" rel="stylesheet" href="#{request.contextPath}/faces/resources/css/primeicons.css" />
+        <link type="text/css" rel="stylesheet" href="#{request.contextPath}/faces/resources/css/primeflex.min.css" />
+        <link type="text/css" rel="stylesheet" href="#{request.contextPath}/faces/resources/css/layout-light.css" />
+        <link type="text/css" rel="stylesheet" href="#{request.contextPath}/faces/resources/css/demo-light.css" />
+        <title>T09_DIONISIO</title>
+        <script type="text/javascript" src="#{request.contextPath}/faces/resources/js/layout.js"></script>
+        <script type="text/javascript" src="#{request.contextPath}/faces/resources/js/prism.js"></script>
+        
+        <link href="../resources/css/cssLayout.css" rel="stylesheet" type="text/css"/>
+        <link href="../resources/css/layout-light.css" rel="stylesheet" type="text/css"/>
+        <link href="../resources/css/demo-light.css" rel="stylesheet" type="text/css"/>
+        <link href="../resources/css/primeicons.css" rel="stylesheet" type="text/css"/>
+    </h:head>
+
+    <h:body>
+
+        <div class="layout-wrapper layout-topbar-light layout-menu-light layout-sidebar">
+
+            <div class="layout-topbar">
+                <div class="layout-topbar-wrapper">
+                    <div class="layout-topbar-left">
+                        <a href="#" class="menu-button">
+                            <i class="pi pi-bars"></i>
+                        </a><a id="logolink" name="logolink" class="layout-topbar-logo"><img
+                                id="j_idt12" src="#{request.contextPath}/faces/resources/images/Recurso 6.png"
+                                alt="" /></a>
+                    </div>
+                    <div class="menu-wrapper">
+                        <div class="sidebar-logo">
+                            <a ><img id="j_idt15"
+                                                          src="#{request.contextPath}/faces/resources/images/Recurso 6.png" alt="" />
+                            </a>
+                            <a href="#" class="sidebar-pin" title="Toggle Menu">
+                                <span class="pin"></span>
+                            </a>
+
+                        </div>
+                        <div class="layout-menu-container">
+                            <form id="menuform" name="menuform" method="post"
+                                  action=""
+                                  enctype="application/x-www-form-urlencoded">
+                                <input type="hidden" name="menuform" value="menuform" />
+                                <ul id="menuform:j_idt17" class="layout-menu">
+                                    <li id="menuform:m_dashboard" role="menuitem"><a href="bienvenida.xhtml"><i
+                                                class="pi pi-home"></i><span>Inicio</span></a>
+                                        <div class="layout-menu-tooltip">
+                                            <div class="layout-menu-tooltip-arrow"></div>
+                                            <div class="layout-menu-tooltip-text">Inicio</div>
+                                        </div>
+                                    </li>
+                                    <li id="menuform:m_components" role="menuitem" class=""><a href="cliente.xhtml"><i
+                                                class="pi pi-file-o"></i><span>Maestras</span><i
+                                                class="pi pi-chevron-down layout-submenu-toggler  "></i></a>
+                                        <div class="layout-menu-tooltip">
+                                            <div class="layout-menu-tooltip-arrow"></div>
+                                            <div class="layout-menu-tooltip-text">Maestras</div>
+                                        </div>
+                                        <ul role="menu">
+                                            <li id="menuform:m_formlayout" role="menuitem"><a href="cliente.xhtml"><i
+                                                        class="pi pi-user"></i><span>Persona</span></a>
+                                                <div class="layout-menu-tooltip">
+                                                    <div class="layout-menu-tooltip-arrow"></div>
+                                                    <div class="layout-menu-tooltip-text">Persona</div>
+                                                </div>
+                                            </li>
+                                            <li id="menuform:m_formlayout" role="menuitem"><a href="proveedor.xhtml"><i
+                                                        class="pi pi-id-card"></i><span>Proveedor</span></a>
+                                                <div class="layout-menu-tooltip">
+                                                    <div class="layout-menu-tooltip-arrow"></div>
+                                                    <div class="layout-menu-tooltip-text">Proveedor</div>
+                                                </div>
+                                            </li>
+                                            <li id="menuform:m_formlayout" role="menuitem"><a href="producto.xhtml"><i
+                                                        class="pi pi-shopping-cart"></i><span>Producto</span></a>
+                                                <div class="layout-menu-tooltip">
+                                                    <div class="layout-menu-tooltip-arrow"></div>
+                                                    <div class="layout-menu-tooltip-text">Producto</div>
+                                                </div>
+                                            </li>
+                                            <li id="menuform:m_input" role="menuitem"><a href="insumo.xhtml"><i
+                                                        class="pi pi-inbox"></i><span>Insumo</span></a>
+                                                <div class="layout-menu-tooltip">
+                                                    <div class="layout-menu-tooltip-arrow"></div>
+                                                    <div class="layout-menu-tooltip-text">Insumo</div>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <li id="menuform:m_primeblocks" role="menuitem" class=""><a href="venta.xhtml"><i
+                                                class="pi pi-bookmark"></i><span>Transaccional</span><i
+                                                class="pi pi-chevron-down layout-submenu-toggler  "></i></a>
+                                        <div class="layout-menu-tooltip">
+                                            <div class="layout-menu-tooltip-arrow"></div>
+                                            <div class="layout-menu-tooltip-text">Transaccional</div>
+                                        </div>
+                                        <ul role="menu">
+                                            <li id="menuform:m_freeblocks" role="menuitem"><a href="venta.xhtml"><i
+                                                        class="pi pi-plus"></i><span>Venta</span></a>
+                                                <div class="layout-menu-tooltip">
+                                                    <div class="layout-menu-tooltip-arrow"></div>
+                                                    <div class="layout-menu-tooltip-text">Venta</div>
+                                                </div>
+                                            </li>
+                                            <li id="menuform:m_freeblocks" role="menuitem"><a href="compra.xhtml"><i
+                                                        class="pi pi-plus"></i><span>Compra</span></a>
+                                                <div class="layout-menu-tooltip">
+                                                    <div class="layout-menu-tooltip-arrow"></div>
+                                                    <div class="layout-menu-tooltip-text">Compra</div>
+                                                </div>
+                                            </li>
+                                            <li id="menuform:m_freeblocks" role="menuitem"><a href=""><i
+                                                        class="pi pi-plus"></i><span>Reserva</span></a>
+                                                <div class="layout-menu-tooltip">
+                                                    <div class="layout-menu-tooltip-arrow"></div>
+                                                    <div class="layout-menu-tooltip-text">Reserva</div>
+                                                </div>
+                                            </li>
+                                            
+                                        </ul>
+                                    </li>
+                                    <li id="menuform:m_utils" role="menuitem" class=""><a ><i
+                                                class="pi pi-clone"></i><span>Listado</span><i
+                                                class="pi pi-chevron-down layout-submenu-toggler  "></i></a>
+                                        <div class="layout-menu-tooltip">
+                                            <div class="layout-menu-tooltip-arrow"></div>
+                                            <div class="layout-menu-tooltip-text">Listado</div>
+                                        </div>
+                                        <ul role="menu">
+                                            <li id="menuform:m_icons" role="menuitem"><a href="relacionVenta.xhtml"><i
+                                                        class="pi pi-copy"></i><span>Listado de Ventas</span></a>
+                                                <div class="layout-menu-tooltip">
+                                                    <div class="layout-menu-tooltip-arrow"></div>
+                                                    <div class="layout-menu-tooltip-text">Listado de Ventas</div>
+                                                </div>
+                                            </li>
+                                            <li id="menuform:m_icons" role="menuitem"><a href="relacionCompra.xhtml"><i
+                                                        class="pi pi-copy"></i><span>Listado de Compras</span></a>
+                                                <div class="layout-menu-tooltip">
+                                                    <div class="layout-menu-tooltip-arrow"></div>
+                                                    <div class="layout-menu-tooltip-text">Listado de Compras</div>
+                                                </div>
+                                            </li>
+                                            <li id="menuform:m_icons" role="menuitem"><a href="compra.xhtml"><i
+                                                        class="pi pi-copy"></i><span>Listado de Reserva</span></a>
+                                                <div class="layout-menu-tooltip">
+                                                    <div class="layout-menu-tooltip-arrow"></div>
+                                                    <div class="layout-menu-tooltip-text">Listado de Reserva</div>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                                <script id="menuform:j_idt17_s"
+                                        type="text/javascript">$(function () {
+                                        PrimeFaces.cw("Freya", "FreyaMenuWidget", {id: "menuform:j_idt17", closeDelay: "250"});
+                                    });</script>
+                                <input type="hidden" name="javax.faces.ViewState" id="j_id1:javax.faces.ViewState:0"
+                                       value="4395895017692639682:-4340462623230982182" autocomplete="off" />
+                            </form>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="layout-rightpanel">
+                <div class="rightpanel-wrapper">
+                    <div class="rightpanel-section weather-section">
+                        <div class="section-header">
+                            <h6>Today</h6>
+                        </div>
+                        <div class="weather"><img id="j_idt32"
+                                                  src="#{request.contextPath}/faces/resources/images/rightpanel/icon-sun.svg" alt="" />
+                            <div class="weather-info">
+                                <h6>Ankara, 22 May</h6>
+                                <h1>24º</h1>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="rightpanel-section tasks-section">
+                        <div class="section-header">
+                            <h6>My list</h6><button id="j_idt34" name="j_idt34"
+                                                    class="ui-button ui-widget ui-state-default ui-corner-all ui-button-icon-only ui-button-secondary ui-button-flat rounded-button"
+                                                    type="button"><span class="ui-button-icon-left ui-icon ui-c pi pi-plus"></span><span
+                                    class="ui-button-text ui-c">ui-button</span></button>
+                            <script id="j_idt34_s"
+                                    type="text/javascript">$(function () {
+                                    PrimeFaces.cw("CommandButton", "widget_j_idt34", {id: "j_idt34"});
+                                });</script>
+                        </div>
+                        <ul>
+                            <li>
+                                <div class="task-info">
+                                    <h6>Perform usability testing for P15 MVP</h6>
+                                    <span>-Public pages</span>
+                                    <span>-Product pages</span>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="task-info">
+                                    <h6>Buy puzzle set from Amazon</h6>
+                                    <span>Ravensburger Seurat, 2000</span>
+                                </div>
+                            </li>
+                            <li class="done">
+                                <div class="task-info">
+                                    <h6>Morning Run</h6>
+                                </div>
+                                <i class="pi pi-check"></i>
+                            </li>
+                            <li class="done">
+                                <div class="task-info">
+                                    <h6>Morning Run</h6>
+                                </div>
+                                <i class="pi pi-check"></i>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="rightpanel-section favorites-section">
+                        <div class="section-header">
+                            <h6>Favorites</h6>
+                        </div>
+                        <div class="favorite-items">
+                            <a href="#" class="favorite-item"><img id="j_idt36"
+                                                                   src="#{request.contextPath}/faces/resources/images/rightpanel/github.svg" alt="" />
+                            </a>
+                            <a href="#" class="favorite-item"><img id="j_idt38"
+                                                                   src="#{request.contextPath}/faces/resources/images/rightpanel/slack.svg" alt="" />
+                            </a>
+                            <a href="#" class="favorite-item"><img id="j_idt40"
+                                                                   src="#{request.contextPath}/faces/resources/images/rightpanel/aws.svg" alt="" />
+                            </a>
+                            <a href="#" class="favorite-item"><img id="j_idt42"
+                                                                   src="#{request.contextPath}/faces/resources/images/rightpanel/jenkins.svg" alt="" />
+                            </a>
+                            <a href="#" class="favorite-item"><img id="j_idt44"
+                                                                   src="#{request.contextPath}/faces/resources/images/rightpanel/jira.svg" alt="" />
+                            </a>
+                            <a href="#" class="add-item">
+                                <i class="pi pi-plus"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="rightpanel-section chat-section chat">
+                        <div id="j_idt46"
+                             class="ui-tabs ui-widget ui-widget-content ui-corner-all ui-hidden-container ui-tabs-top"
+                             data-widget="widget_j_idt46">
+                            <ul class="ui-tabs-nav ui-helper-reset ui-widget-header ui-corner-all" role="tablist">
+                                <li class="ui-tabs-header ui-state-default ui-tabs-selected ui-state-active ui-corner-top"
+                                    role="tab" aria-expanded="true" aria-selected="true" data-index="0"><a
+                                        href="#j_idt46:j_idt47" tabindex="-1"><img id="j_idt46:j_idt48"
+                                                                               src="#{request.contextPath}/faces/resources/images/rightpanel/profile-1.png"
+                                                                               alt="" />
+                                        <span class="ui-badge">3</span></a></li>
+                                <li class="ui-tabs-header ui-state-default ui-corner-top" role="tab" aria-expanded="false"
+                                    aria-selected="false" data-index="1"><a href="#j_idt46:j_idt53" tabindex="-1"><img
+                                            id="j_idt46:j_idt54"
+                                            src="#{request.contextPath}/faces/resources/images/rightpanel/profile-2.png"
+                                            alt="" />
+                                        <span class="ui-badge">1</span></a></li>
+                                <li class="ui-tabs-header ui-state-default ui-corner-top" role="tab" aria-expanded="false"
+                                    aria-selected="false" data-index="2"><a href="#j_idt46:j_idt59" tabindex="-1"><img
+                                            id="j_idt46:j_idt60"
+                                            src="#{request.contextPath}/faces/resources/images/rightpanel/profile-3.png"
+                                            alt="" /></a></li>
+                                <li class="ui-tabs-header ui-state-default ui-corner-top" role="tab" aria-expanded="false"
+                                    aria-selected="false" data-index="3"><a href="#j_idt46:j_idt64" tabindex="-1"><img
+                                            id="j_idt46:j_idt65"
+                                            src="#{request.contextPath}/faces/resources/images/rightpanel/profile-4.png"
+                                            alt="" /></a></li>
+                                <li class="ui-tabs-header ui-state-default ui-corner-top" role="tab" aria-expanded="false"
+                                    aria-selected="false" data-index="4"><a href="#j_idt46:j_idt69" tabindex="-1">
+                                        <i class="pi pi-plus"></i></a></li>
+                            </ul>
+                            <div class="ui-tabs-panels">
+                                <div id="j_idt46:j_idt47" class="ui-tabs-panel ui-widget-content ui-corner-bottom"
+                                     role="tabpanel" aria-hidden="false" data-index="0">
+                                    <div class="chat">
+                                        <span class="fade"></span>
+                                        <div class="chat-content">
+                                            <div class="chat-message send">
+                                                <span class="name">You</span>
+                                                <div class="message">
+                                                    <p>Hey M. hope you are well. Our idea is accepted by the board. Now it’s
+                                                        time to execute it.</p>
+                                                    <span>3 mins ago</span>
+                                                </div>
+                                                <div class="message">
+                                                    <p>we did it! 🤠</p>
+                                                    <span>3 mins ago</span>
+                                                </div>
+                                            </div>
+                                            <div class="chat-message">
+                                                <span class="name">Micheal J.</span>
+                                                <div class="message">
+                                                    <p>That’s really good!</p>
+                                                    <span>3 mins ago</span>
+                                                </div>
+                                            </div>
+                                            <div class="chat-message send">
+                                                <span class="name">You</span>
+                                                <div class="message">
+                                                    <p>But it’s important to ship MVP ASAP</p>
+                                                    <span>3 mins ago</span>
+                                                </div>
+                                            </div>
+                                            <div class="chat-message">
+                                                <span class="name">Micheal J.</span>
+                                                <div class="message">
+                                                    <p>I’ll be looking at the process then, just to be sure 🤓 </p>
+                                                    <span>3 mins ago</span>
+                                                </div>
+                                            </div>
+                                            <div class="chat-message send">
+                                                <span class="name">You</span>
+                                                <div class="message">
+                                                    <p>That’s awesome. Thanks!</p>
+                                                    <span>3 mins ago</span>
+                                                </div>
+                                            </div>
+                                            <div class="chat-message">
+
+                                            </div>
+                                        </div>
+                                        <div class="chat-input"><input id="j_idt46:j_idt51" name="j_idt46:j_idt51"
+                                                                       type="text"
+                                                                       class="ui-inputfield ui-inputtext ui-widget ui-state-default ui-corner-all "
+                                                                       placeholder="Write here..." />
+                                            <script id="j_idt46:j_idt51_s"
+                                                    type="text/javascript">$(function () {
+                                                    PrimeFaces.cw("InputText", "widget_j_idt46_j_idt51", {id: "j_idt46:j_idt51"});
+                                                });</script>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div id="j_idt46:j_idt53"
+                                     class="ui-tabs-panel ui-widget-content ui-corner-bottom ui-helper-hidden"
+                                     role="tabpanel" aria-hidden="true" data-index="1">
+                                    <div class="chat">
+                                        <span class="fade"></span>
+                                        <div class="chat-content">
+                                            <div class="chat-message">
+                                                <span class="name">Sarah</span>
+                                                <div class="message">
+                                                    <p>That’s really good!</p>
+                                                    <span>3 mins ago</span>
+                                                </div>
+                                            </div>
+                                            <div class="chat-message send">
+                                                <span class="name">You</span>
+                                                <div class="message">
+                                                    <p>But it’s important to ship MVP ASAP</p>
+                                                    <span>3 mins ago</span>
+                                                </div>
+                                            </div>
+                                            <div class="chat-message">
+
+                                            </div>
+                                        </div>
+                                        <div class="chat-input"><input id="j_idt46:j_idt57" name="j_idt46:j_idt57"
+                                                                       type="text"
+                                                                       class="ui-inputfield ui-inputtext ui-widget ui-state-default ui-corner-all "
+                                                                       placeholder="Write here..." />
+                                            <script id="j_idt46:j_idt57_s"
+                                                    type="text/javascript">$(function () {
+                                                    PrimeFaces.cw("InputText", "widget_j_idt46_j_idt57", {id: "j_idt46:j_idt57"});
+                                                });</script>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div id="j_idt46:j_idt59"
+                                     class="ui-tabs-panel ui-widget-content ui-corner-bottom ui-helper-hidden"
+                                     role="tabpanel" aria-hidden="true" data-index="2">
+                                    <div class="chat">
+                                        <div class="chat-content no-message">
+                                            <h4>No Message From Margret K.</h4>
+                                        </div>
+                                        <div class="chat-input"><input id="j_idt46:j_idt62" name="j_idt46:j_idt62"
+                                                                       type="text"
+                                                                       class="ui-inputfield ui-inputtext ui-widget ui-state-default ui-corner-all "
+                                                                       placeholder="Write here..." />
+                                            <script id="j_idt46:j_idt62_s"
+                                                    type="text/javascript">$(function () {
+                                                    PrimeFaces.cw("InputText", "widget_j_idt46_j_idt62", {id: "j_idt46:j_idt62"});
+                                                });</script>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div id="j_idt46:j_idt64"
+                                     class="ui-tabs-panel ui-widget-content ui-corner-bottom ui-helper-hidden"
+                                     role="tabpanel" aria-hidden="true" data-index="3">
+                                    <div class="chat">
+                                        <div class="chat-content no-message">
+                                            <h4>No Message From Bob C.</h4>
+                                        </div>
+                                        <div class="chat-input"><input id="j_idt46:j_idt67" name="j_idt46:j_idt67"
+                                                                       type="text"
+                                                                       class="ui-inputfield ui-inputtext ui-widget ui-state-default ui-corner-all "
+                                                                       placeholder="Write here..." />
+                                            <script id="j_idt46:j_idt67_s"
+                                                    type="text/javascript">$(function () {
+                                                    PrimeFaces.cw("InputText", "widget_j_idt46_j_idt67", {id: "j_idt46:j_idt67"});
+                                                });</script>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div id="j_idt46:j_idt69"
+                                     class="ui-tabs-panel ui-widget-content ui-corner-bottom ui-helper-hidden"
+                                     role="tabpanel" aria-hidden="true" data-index="4">
+                                    <div class="chat">
+                                        <span class="fade"></span>
+                                        <div class="contacts">
+                                            <ul>
+                                                <li><img id="j_idt46:j_idt72"
+                                                         src="#{request.contextPath}/faces/resources/images/rightpanel/profile-1.png"
+                                                         alt="" />
+                                                    <div class="contact-info">
+                                                        <h6>John Doe</h6>
+                                                        <span>Active</span>
+                                                    </div>
+                                                </li>
+                                                <li><img id="j_idt46:j_idt74"
+                                                         src="#{request.contextPath}/faces/resources/images/rightpanel/profile-2.png"
+                                                         alt="" />
+                                                    <div class="contact-info">
+                                                        <h6>John Doe</h6>
+                                                        <span>Active</span>
+                                                    </div>
+                                                </li>
+                                                <li><img id="j_idt46:j_idt76"
+                                                         src="#{request.contextPath}/faces/resources/images/rightpanel/profile-3.png"
+                                                         alt="" />
+                                                    <div class="contact-info">
+                                                        <h6>John Doe</h6>
+                                                        <span>Active</span>
+                                                    </div>
+                                                </li>
+                                                <li><img id="j_idt46:j_idt78"
+                                                         src="#{request.contextPath}/faces/resources/images/rightpanel/profile-4.png"
+                                                         alt="" />
+                                                    <div class="contact-info">
+                                                        <h6>John Doe</h6>
+                                                        <span>Active</span>
+                                                    </div>
+                                                </li>
+                                                <li><img id="j_idt46:j_idt80"
+                                                         src="#{request.contextPath}/faces/resources/images/rightpanel/profile-1.png"
+                                                         alt="" />
+                                                    <div class="contact-info">
+                                                        <h6>John Doe</h6>
+                                                        <span>Active</span>
+                                                    </div>
+                                                </li>
+                                                <li><img id="j_idt46:j_idt82"
+                                                         src="#{request.contextPath}/faces/resources/images/rightpanel/profile-1.png"
+                                                         alt="" />
+                                                    <div class="contact-info">
+                                                        <h6>John Doe</h6>
+                                                        <span>Active</span>
+                                                    </div>
+                                                </li>
+                                                <li><img id="j_idt46:j_idt84"
+                                                         src="#{request.contextPath}/faces/resources/images/rightpanel/profile-1.png"
+                                                         alt="" />
+                                                    <div class="contact-info">
+                                                        <h6>John Doe</h6>
+                                                        <span>Active</span>
+                                                    </div>
+                                                </li>
+                                                <li><img id="j_idt46:j_idt86"
+                                                         src="#{request.contextPath}/faces/resources/images/rightpanel/profile-1.png"
+                                                         alt="" />
+                                                    <div class="contact-info">
+                                                        <h6>John Doe</h6>
+                                                        <span>Active</span>
+                                                    </div>
+                                                </li>
+                                                <li><img id="j_idt46:j_idt88"
+                                                         src="#{request.contextPath}/faces/resources/images/rightpanel/profile-1.png"
+                                                         alt="" />
+                                                    <div class="contact-info">
+                                                        <h6>John Doe</h6>
+                                                        <span>Active</span>
+                                                    </div>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <div class="chat-input"><input id="j_idt46:j_idt90" name="j_idt46:j_idt90"
+                                                                       type="text"
+                                                                       class="ui-inputfield ui-inputtext ui-widget ui-state-default ui-corner-all "
+                                                                       placeholder="Search new person" />
+                                            <script id="j_idt46:j_idt90_s"
+                                                    type="text/javascript">$(function () {
+                                                    PrimeFaces.cw("InputText", "widget_j_idt46_j_idt90", {id: "j_idt46:j_idt90"});
+                                                });</script>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div><input id="j_idt46_activeIndex" name="j_idt46_activeIndex" type="hidden"
+                                         autocomplete="off" aria-hidden="true" value="0" />
+                        </div>
+                        <script id="j_idt46_s"
+                                type="text/javascript">$(function () {
+                                PrimeFaces.cw("TabView", "widget_j_idt46", {id: "j_idt46", effectDuration: "normal", scrollable: false});
+                            });</script>
+                    </div>
+                </div>
+            </div>
+            <div class="layout-main">
+                <div class="layout-content">
+                    <div class="grid">
+                        <div class="col">
+                            <div id="content">
+                                <ui:insert name="content"></ui:insert>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="layout-footer">
+                    <div class="grid">
+                       
+                        
+                        <div class="col-12 md:col-6 lg:col-5">
+                           
+                           
+                        </div>
+                        <div class="col-12">
+                            <div class="footer-bottom">
+                                <h4>DIONISIO</h4>
+                                <h6>Sistema de ventas de Vinos y Piscos</h6>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="j_idt140" style="width:32px;height:32px;position:fixed;right:7px;bottom:7px">
+                <div id="j_idt140_start" style="display:none">
+                    <i class="pi pi-spin pi-spinner ajax-loader" aria-hidden="true"></i>
+                </div>
+                <div id="j_idt140_complete" style="display:none"></div>
+            </div>
+            <script id="j_idt140_s"
+                    type="text/javascript">$(function () {
+                    PrimeFaces.cw("AjaxStatus", "widget_j_idt140", {id: "j_idt140", delay: 0}); });</script>
+            <div class="layout-mask modal-in"></div>
+        </div>
+    </h:body>
+
+</html>

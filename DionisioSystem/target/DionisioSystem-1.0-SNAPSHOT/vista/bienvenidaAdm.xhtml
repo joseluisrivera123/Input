@@ -1,0 +1,63 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:fn="http://java.sun.com/jsp/jstl/functions">
+    <script src="js/validador.js" type="text/javascript"></script>
+    <link href="../resource/css/style.css" rel="stylesheet" type="text/css"/>
+    <h:head>
+    </h:head>
+    <h:body>
+
+        <h:form id="form">
+            <div class="card" style="width:220px;float: bottom ; position: absolute;display: block" >
+                <br/>
+                <h2 style="margin:5px;color: #2196F3">Ventas de vinos</h2>
+                <h:outputLabel value="Hola : #{loginC.administrador}" style="float: right;margin-right: -1600px;font-size: 30px"/>
+                <p:tabMenu activeIndex="0" style="width:210px" >
+                    <p:menuitem value="Home" outcome="bienvenida" icon="pi pi-fw pi-home">
+                        <f:param name="i" value="0"/>
+                    </p:menuitem>
+                    <p:menuitem value="Cliente" outcome="cliente" icon="pi pi-fw pi-user">
+                        <f:param name="i" value="1"/>
+                    </p:menuitem>
+                    <p:menuitem value="Usuario" outcome="usuario" icon="pi pi-fw pi-user">
+                        <f:param name="i" value="2"/>
+                    </p:menuitem>
+                    <p:menuitem value="Producto" outcome="producto" icon="pi pi-fw pi-tag">
+                        <f:param name="i" value="3"/>
+                    </p:menuitem>
+                    <p:menuitem value="Proveedor" outcome="proveedor" icon="pi pi-fw pi-tag">
+                        <f:param name="i" value="4"/>
+                    </p:menuitem>
+                    <p:menuitem value="Venta" outcome="venta" icon="pi pi-fw pi-shopping-cart">
+                        <f:param name="i" value="5"/>
+                    </p:menuitem>
+                    <p:menuitem value="Listado de Ventas" outcome="relacionVenta" icon="pi pi-fw pi-bars">
+                        <f:param name="i" value="6"/>
+                    </p:menuitem>
+                    <p:menuitem value="sign-out" outcome="login" icon="pi pi-fw pi-sign-out">
+                        <f:param name="i" value="8"/>
+                    </p:menuitem>
+                </p:tabMenu>
+            </div>
+        </h:form>
+        <section class="inicio" id="inicio" >  
+            <hr style="height: 1000px;width: 0px;margin-left: 50px ; margin-top: -96px" />  
+            <div class="content" >
+                <h3> Bienvenido a Dionisio System </h3>
+                <p> Este sistema esta diseñado exclusivamente para realizar 
+                    ventas de vinos y piscos a la distinguida clientela en 
+                    la provincia de cañete , también se podra vender de manera
+                    delivery a distintos puntos de Cañete como el distrito de :
+                    Imperial , San vicente y Nuevo Imperial. </p>
+            </div>
+            <div class="image">
+                <img src="../Image/vino.png" alt=""/>
+            </div>
+        </section>
+    </h:body>
+</html>

@@ -1,0 +1,26 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:fn="http://java.sun.com/jsp/jstl/functions">
+    <h:head>
+        <title>TODO supply a title</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <script src="js/validador.js" type="text/javascript"></script>
+    </h:head>
+    <h:body>
+        <p:growl id="msj" showDetail="true" skipDetailIfEqualsSummary="true">
+            <p:autoUpdate/>
+        </p:growl>
+        <h:form id="form">
+        <p:panelGrid columns="2">
+            <p:outputLabel value="Dolar" />
+            <p:outputLabel value="#{apiC.api.cambio}" id="cambio"/>
+            <p:commandButton action="#{apiC.prueba()}" value="Cambiar" update="form"/>
+        </p:panelGrid>
+        </h:form>
+    </h:body>
+</html>

@@ -1,0 +1,172 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<ui:composition template="./Plantilla.xhtml"
+    xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:fn="http://java.sun.com/jsp/jstl/functions">
+    <ui:define name="content">
+    <h:head>
+        <title>Listar Producto</title>
+        <f:event listener="#{productoC.listar()}" type="preRenderView" />
+    </h:head>
+    <h:body >
+        <p:growl id="mensaje" severity="info, fatal" showDetail="true" showSummary="true" />
+        <center>
+            <br/>
+            <h2>Registro de Productos</h2>
+            <br/>
+            <!--            Formulario para registrar-->
+            <h:form id="Registro">
+                <!--                Panel grid-->
+                <p:panelGrid  columns="2" >
+                    <p:outputLabel value="Nombre" />
+                    <p:inputText value="#{productoC.producto.nombre}" required="true" style="text-align: center;width: 250px" id="nombre">
+                        <p:keyFilter regEx="/[A-Za-z ]/" />
+                    </p:inputText>
+
+                    <p:outputLabel value="Precio" />
+                    <p:inputText value="#{productoC.producto.precio}" required="true" id="Precio" style="text-align: center;width: 250px" maxlength="7" >
+                        <p:keyFilter regEx="/[0-9.]/" />
+                    </p:inputText>
+
+                    
+                        <p:outputLabel value="Tipo"  />
+                        <p:selectOneMenu id="tipo"  value="#{productoC.producto.tipo}" styleClass="ticket"
+                                         autoWidth="true" required="true" style="width: 250px" >
+                            <f:selectItem  itemLabel="Seleccionar" itemValue=""/>
+                            <f:selectItem itemLabel="Vino" itemValue="V" />
+                            <f:selectItem itemLabel="Pisco" itemValue="P"/>
+                        </p:selectOneMenu>
+
+
+                    <p:outputLabel value="Tamaño" />
+                    <p:selectOneMenu id="tamaño" value="#{productoC.producto.tamaño}" styleClass="ticket"
+                                     autoWidth="true" style="width: 250px" required="true" >
+                        <f:selectItem itemLabel="Seleccionar" itemValue=""/>
+                        <f:selectItem itemLabel="500 ml" itemValue="500 ml" />
+                        <f:selectItem itemLabel="750 ml" itemValue="750 ml"/>
+                        <f:selectItem itemLabel="1L" itemValue="1L"/>
+                    </p:selectOneMenu>
+
+
+                    <p:outputLabel value="Stock" />
+                    <p:inputText value="#{productoC.producto.stock}" required="true" maxlength="5" id="stock" style="text-align: center;width: 250px">
+                        <p:keyFilter regEx="/[0-9]/" />
+                    </p:inputText>
+                    <p:outputLabel value="Detalle" />
+                    <p:inputTextarea value="#{productoC.producto.detalle}" required="true" id="detalle" style="text-align: center;width: 250px" >
+                        <p:keyFilter regEx="/[A-Za-zñáéíóú0-9 ]/" />
+                    </p:inputTextarea>
+                </p:panelGrid>
+                <br/>
+            <p:commandButton value="Registrar" actionListener="#{productoC.registrar()}" update=":MostrarProducto:tablapro Registro mensaje Registro " />
+            &#160;
+            <p:commandButton value="Limpiar" actionListener="#{productoC.limpiar()}" update="Registro"/>
+            &#160;
+            <br/>
+            <br/>
+            </h:form>
+             <h:form >
+                <p:commandButton value="Cliente Report" onclick="this.form.target = '_blank'" styleClass="rounded-button ui-button-secondary"
+                                 ajax="false" title="Reporte de Cliente" actionListener="#{productoC.verReportePDFEST()}"/>
+            </h:form>
+
+
+            <!--            Creación del formulario 2-->
+
+            <h:form id="MostrarProducto">
+                <p:dataTable id="tablapro" var="tblpro" value="#{productoC.listadoProducto}" rows="5" 
+                             selection="#{productoC.producto}" rowKey="#{tblpro.idproducto}"
+                             selectionMode="single" resizableColumns="true"
+                             paginator="true"
+                             paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                             currentPageReportTemplate="{startRecord}-{endRecord} of {totalRecords} records"
+                             rowsPerPageTemplate="1,5,{ShowAll|'All'}" >
+
+                    <f:facet name="header">
+                        <p:outputLabel value="Filtro Por: " style="align-content: center ; alignment-adjust : central "/>
+                        <center>
+                            <p:selectOneMenu value="#{productoC.listado}" style="width: 100px">
+                                <f:selectItem itemValue="1" itemLabel="Activos"/>
+                                <f:selectItem itemValue="2" itemLabel="Inactivos"/>
+                                <f:selectItem itemValue="3" itemLabel="Todos"/>
+                                <p:ajax listener="#{productoC.listar()}" update="MostrarProducto:tablapro"/>
+                            </p:selectOneMenu>
+                        </center>
+                    </f:facet>
+                    <p:column headerText="Nombre" style="width: 250px ; text-align: center"  >
+                        <h:outputText value="#{tblpro.nombre}"  />
+                    </p:column> 
+                    <p:column headerText="Precio" style="width: 90px ; text-align: center"  >
+                        <h:outputText value="#{tblpro.precio}"  />
+                    </p:column>    
+                    <p:column headerText="Tipo" sortBy="#{tblpro.tipo}"  style="width: 70px ; text-align: center">
+                        <h:outputText value="#{tblpro.tipo}" >
+                            <f:converter converterId="productoConverter"/>
+                        </h:outputText>
+                    </p:column>
+                    <p:column headerText="Tamaño" style="width: 100px ; text-align: center" >
+                        <h:outputText value="#{tblpro.tamaño}"  />
+                    </p:column>  
+                    <p:column headerText="Stock"  style="width: 65px ; text-align: center"  >
+                        <h:outputText value="#{tblpro.stock}"  />
+                    </p:column>  
+                    <p:column headerText="Detalle" style="width: 700px ; text-align: center"  >
+                        <h:outputText value="#{tblpro.detalle}"  />
+                    </p:column>  
+                </p:dataTable>
+                <!--                Contextmenu-->
+                <p:contextMenu for="tablapro">
+                    <p:menuitem value="Modificar" icon="pi pi-pencil" oncomplete="PF('wdlgDatos').show()" update=":formModificar"/>
+                    <p:menuitem value="Eliminar" icon="pi pi-trash" actionListener="#{productoC.eliminar()}" update="tablapro">
+                        <p:confirm header="Confirmación" message="¿Deseas elimnar?"/>
+                    </p:menuitem> 
+                    <p:menuitem value="Restaurar" icon="=pi pi-trash" actionListener="#{productoC.restaurar()}" update="tablapro mensaje">
+                        <p:confirm header="Confirmación" message="¿Deseas restaurar?" icon="pi pi-user-plus"/>
+                    </p:menuitem>
+                </p:contextMenu>
+
+                <p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
+                    <p:commandButton value="Si" type="button" styleClass="ui-confirmdialog-yes" icon="ui-icon-check"/>
+                    <p:commandButton value="No" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close"/>
+                </p:confirmDialog>
+            </h:form>
+
+
+            <p:dialog header="Datos del Producto" widgetVar="wdlgDatos" id="dlgDatos">
+                <h:form id="formModificar">
+                    <p:panelGrid columns="2">
+                        <p:outputLabel value="Nombre" />
+                        <p:inputText value="#{productoC.producto.nombre}" id="nombre"/>
+                        <p:outputLabel value="Precio" />
+                        <p:inputText value="#{productoC.producto.precio}"  id="Precio"/>
+
+                        <p:outputLabel value="Tipo" />
+                        <p:selectOneMenu id="tipo" value="#{productoC.producto.tipo}" styleClass="ticket"
+                                         autoWidth="true" style="width: 200px" required="true" >
+                            <f:selectItem itemLabel="Seleccionar" itemValue=""/>
+                            <f:selectItem itemLabel="Vino" itemValue="V" />
+                            <f:selectItem itemLabel="Pisco" itemValue="P"/>
+                        </p:selectOneMenu>
+
+
+                        <p:outputLabel value="Stock" />
+                        <p:inputText value="#{productoC.producto.stock}" id="stock"/>
+                        <p:outputLabel value="Tamano" />
+                        <p:outputLabel value="#{productoC.producto.tamaño}"  id="tamano"/>
+                        <p:outputLabel value="Detalle" />
+                        <p:inputText value="#{productoC.producto.detalle}" id="detalle"/>
+                        <p:commandButton value="Cancelar" immediate="true" oncomplete="PF('wdlgDatos').hide();" actionListener="#{productoC.limpiar()}" />
+                        <p:commandButton id="modicardialog" value="Modificar" actionListener="#{productoC.modificar()}" 
+                                         update="formModificar :MostrarProducto:tablapro" 
+                                         oncomplete="if(!args.validationFailed)PF('wdlgDatos').hide();"/>
+                    </p:panelGrid>
+                </h:form>
+            </p:dialog>
+        </center>
+    </h:body>
+        </ui:define>
+</ui:composition>

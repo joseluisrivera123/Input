@@ -1,0 +1,253 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.19.1.final using JasperReports Library version 6.19.1-867c00bf88cd4d784d404379d6c05e1b419e8a4c  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="reporteCliente" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="abf31b41-2c98-43bf-abbd-96db7489b263">
+	<property name="com.jaspersoft.studio.data.sql.tables">
+		<![CDATA[IlBlcnNvbmEiIEFTICwxMzEsMTQ1LGEzNjhiMTBkLTlkOGEtNGY1Mi04MDJhLTY0NDFkNmQzMTc3
+MTs=]]>
+	</property>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="DionisioDB"/>
+	<queryString language="SQL">
+		<![CDATA[SELECT "IDPER",
+	"NOMPER",
+	"APEPER",
+	"EMAILPER",
+	"CELPER",
+	"DNIPER",
+	"DIRPER",
+	"CODUBI"
+FROM "Persona"]]>
+	</queryString>
+	<field name="IDPER" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.name" value="IDPER"/>
+		<property name="com.jaspersoft.studio.field.label" value="IDPER"/>
+	</field>
+	<field name="NOMPER" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="NOMPER"/>
+		<property name="com.jaspersoft.studio.field.label" value="NOMPER"/>
+	</field>
+	<field name="APEPER" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="APEPER"/>
+		<property name="com.jaspersoft.studio.field.label" value="APEPER"/>
+	</field>
+	<field name="EMAILPER" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="EMAILPER"/>
+		<property name="com.jaspersoft.studio.field.label" value="EMAILPER"/>
+	</field>
+	<field name="CELPER" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="CELPER"/>
+		<property name="com.jaspersoft.studio.field.label" value="CELPER"/>
+	</field>
+	<field name="DNIPER" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="DNIPER"/>
+		<property name="com.jaspersoft.studio.field.label" value="DNIPER"/>
+	</field>
+	<field name="DIRPER" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="DIRPER"/>
+		<property name="com.jaspersoft.studio.field.label" value="DIRPER"/>
+	</field>
+	<field name="CODUBI" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="CODUBI"/>
+		<property name="com.jaspersoft.studio.field.label" value="CODUBI"/>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="61" splitType="Stretch">
+			<staticText>
+				<reportElement x="449" y="23" width="100" height="14" uuid="1974b489-67fb-4870-b0fb-978f55f9e829"/>
+				<text><![CDATA[934692267]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="83" y="0" width="182" height="20" uuid="9ffb874e-835c-4d13-a441-12c984392af3"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[De : Huapaya David Marleny Gloria]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="83" y="20" width="182" height="20" uuid="05a0de80-8980-4ff5-ba14-0e0e6eb2abf9"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[Venta de todo tipo de vino]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="331" y="3" width="118" height="16" uuid="6fc2c649-12ec-4663-ac36-d720f233487f"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Fecha del reporte :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="27" y="41" width="304" height="20" uuid="b1a509a8-f764-4a6a-8bc9-02b04d4fa44b"/>
+				<textElement>
+					<font size="11" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Fnd. Santa Elvira Almenares S/N Nuevo Imperial - Cañete - Lima]]></text>
+			</staticText>
+			<textField pattern="MMMM d, yyyy">
+				<reportElement x="449" y="3" width="100" height="16" uuid="a71cae66-978f-4c6d-8829-3bd57052c73b"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="329" y="21" width="138" height="20" uuid="df13b8a7-a715-4d5f-91ae-2494095d5e6f"/>
+				<textElement textAlignment="Left">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[                   Celular  : ]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="1" splitType="Stretch">
+			<line>
+				<reportElement x="0" y="0" width="553" height="1" uuid="58196cac-6d40-48fd-9dfc-e4463d5c9f40"/>
+			</line>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="77" splitType="Stretch">
+			<rectangle>
+				<reportElement x="380" y="47" width="175" height="30" backcolor="#030303" uuid="a82951f4-53f5-463d-b495-bafe1e23a8a3"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="290" y="47" width="89" height="30" backcolor="#030303" uuid="bdf79b4a-c857-4647-bfd4-2e1b1add5968"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="190" y="47" width="100" height="30" backcolor="#030303" uuid="8393ced9-10ab-4f8f-b8ef-2d6bfe4714a8"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="83" y="47" width="107" height="30" backcolor="#030303" uuid="9f4b9828-1c04-4e78-a938-aa62c243673d"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="1" y="47" width="82" height="30" backcolor="#080808" uuid="40d3fb1d-c2cf-499e-b8cd-127362a1cebb"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="1" y="47" width="82" height="30" forecolor="#FFFFFF" uuid="100d93a8-7001-4261-ba86-058235aed881">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="6cd6def3-e89b-4665-ac4a-90b0fad61cc5"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[DNI]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="190" y="47" width="100" height="30" forecolor="#FFFFFF" uuid="581f6fb8-f5d1-454d-935f-859927a4301f">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="dd96fb5e-5b22-4da5-b327-9f6286cda9eb"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Apellido]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="290" y="47" width="90" height="30" forecolor="#FFFFFF" uuid="9c597c81-eb03-4769-a800-26847c297d55">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="5366785a-9b89-468c-9bf9-da03211fbd53"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Celular]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="380" y="47" width="174" height="30" forecolor="#FFFFFF" uuid="0b7d5e97-a6ee-4588-9053-a1b969f604fe">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="7380c464-9782-4ee2-ba1e-d6ae9afe083c"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Correo electronico]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="83" y="47" width="107" height="30" forecolor="#FFFFFF" uuid="1dcf1892-0e19-4adb-8eec-10311ce05039">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="9e2ddd52-e9bf-4822-aa12-344b281e06cb"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Nombre]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement x="1" y="4" width="553" height="30" backcolor="#407DB3" uuid="a98a4d50-3b96-4519-a9ba-3f86428196e4"/>
+				<graphicElement>
+					<pen lineColor="#FFFFFF"/>
+				</graphicElement>
+			</rectangle>
+			<staticText>
+				<reportElement x="9" y="4" width="546" height="30" forecolor="#FCFCFC" backcolor="#FFFFFF" uuid="42e5f34d-1e7e-4c68-8c56-7d562386960e"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="20" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Reporte de Cliente ]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="25" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="5" width="83" height="20" uuid="b01aad83-dcb1-4707-898b-76de92d89b07">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="6c79a448-0f66-4942-bf14-06b9c3c8b7ce"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{DNIPER}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="83" y="5" width="106" height="20" uuid="354f603a-df68-46c7-a41e-53147ce65a2b">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="9a37b133-3e57-4e56-90e4-b9aa10469466"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{NOMPER}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="189" y="5" width="101" height="20" uuid="ef7fecc9-601a-4c56-b843-580cb50d3298">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="84506d81-7e9b-4b6a-8b6c-0fc54e761458"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{APEPER}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="290" y="5" width="90" height="20" uuid="88bfefc1-0b4f-4fd2-9fc4-340b197ca2b2">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="f92152b4-8428-41fd-a896-3680317df810"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{CELPER}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="380" y="5" width="175" height="20" uuid="cca2f5b3-3a63-4de0-8168-7f3990d62506">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="11408649-fd01-4a3d-826e-cb41992081bd"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{EMAILPER}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="30" splitType="Stretch">
+			<textField>
+				<reportElement x="237" y="0" width="100" height="30" uuid="c105a3e9-8570-4720-b920-2c1a1dc15fe2"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField pattern="MMM d, yyyy h:mm:ss a">
+				<reportElement x="420" y="0" width="134" height="30" uuid="afa2b041-655e-44ab-9c84-b853a0e581e9"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="1" y="0" width="232" height="30" uuid="03d73b66-43ea-4ede-b1ff-7e0ff97ac94c"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Elaborado por Jesus Ignacio , Sulca Ciprian]]></text>
+			</staticText>
+		</band>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>

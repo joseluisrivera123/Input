@@ -1,0 +1,160 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<ui:composition template="./Plantilla.xhtml"
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:fn="http://java.sun.com/jsp/jstl/functions">
+
+    <ui:define name="content">
+        <h:head>
+            <title>Listar Proveedor</title>
+            <f:event listener="#{proveedorC.listar()}" type="preRenderView" />
+
+        </h:head>
+        <h:body >
+            <center>
+
+                <h2>Registro de Proveedores</h2>
+
+                <h:form id="Registro">
+
+                    <p:panelGrid  columns="2" >
+                        <p:outputLabel value="Ruc" />
+                        <p:commandButton value="Consultar" action="#{personaC}">
+                        <p:inputText value="#{proveedorC.proveedor.ruc}" required="true" style="text-align: center;width: 250px" id="ruc" maxlength="11" >
+                            <p:keyFilter regEx="/[0-12.]/" />
+                        </p:inputText>
+                            </p:commandButton>
+
+
+                        <p:outputLabel value="RazonSocial" />
+                        <p:inputText value="#{proveedorC.proveedor.razonSocial}" required="true" id="razonsocial" style="text-align: center;width: 250px" >
+                            <p:keyFilter regEx="/[A-Za-z ]/" />
+                        </p:inputText>
+
+
+                        <p:outputLabel value="Email" />
+                        <p:inputText value="#{proveedorC.proveedor.emailProveedor}" required="true" id="Email" style="text-align: center;width: 250px" >
+                            <p:keyFilter regEx="/[A-Za-zñáéíóú0-9 ]/" />
+                        </p:inputText>
+
+                        <p:outputLabel value="Direccion" />
+                        <p:inputText value="#{proveedorC.proveedor.direccionProveedor}" required="true" id="Direccion" style="text-align: center;width: 250px"  >
+                            <p:keyFilter regEx="/[A-Za-zñáéíóú0-9 ]/" />
+                        </p:inputText>
+
+
+                        <p:outputLabel value="Celular" />
+                        <p:inputText value="#{proveedorC.proveedor.celularProveedor}" required="true" maxlength="8" id="Celular" style="text-align: center;width: 250px">
+                            <p:keyFilter regEx="/[0-9]/" />
+                        </p:inputText>
+
+
+                        <p:outputLabel value="Ubicación"  />
+                        <p:selectOneMenu id="txtUBICLI"
+                                         value="#{proveedorC.proveedor.ubigeoProveedor}" styleClass="ticket"
+                                         autoWidth="true" disabled="#{proveedorC.distrito}" style="width: 315px" >
+
+                            <f:selectItem noSelectionOption="true"
+                                          itemLabel="Seleccionar"  />
+                            <f:selectItems value="#{proveedorC.listarUbig()}" var="ubigeo"
+                                           itemValue="#{ubigeo.ubigeo}"
+                                           itemLabel="#{ubigeo.departamento},#{ubigeo.provincia}, #{ubigeo.distrito}" />
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton value="Registrar" actionListener="#{proveedorC.registrar()}" update=":MostrarProducto:tablaprov Registro " />
+                    &#160;
+                    <p:commandButton value="Limpiar" actionListener="#{proveedorC.limpiar()}" update="Registro"/>
+                    &#160;
+
+                </h:form>
+                <br/>
+                <br/>
+                <h:form >
+                    <p:commandButton value="Cliente Report" onclick="this.form.target = '_blank'" styleClass="rounded-button ui-button-secondary"
+                                     ajax="false" title="Reporte de Cliente" actionListener="#{proveedorC.verReportePDFEST()}"/>
+                </h:form>
+
+
+
+                <h:form id="MostrarProducto">
+                    <p:dataTable id="tablaprov" var="tblprov" value="#{proveedorC.listadoProveedor}" rows="5" 
+                                 selection="#{proveedorC.proveedor}" rowKey="#{tblprov.idProvedor}"
+                                 selectionMode="single" resizableColumns="true"
+                                 paginator="true"
+                                 paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                                 currentPageReportTemplate="{startRecord}-{endRecord} of {totalRecords} records"
+                                 rowsPerPageTemplate="1,5,{ShowAll|'All'}" >
+
+                        <f:facet name="header">
+                            <p:outputLabel value="Filtro Por: " style="align-content: center ; alignment-adjust : central "/>
+                            <center>
+                                <p:selectOneMenu value="#{proveedorC.listado}" style="width: 100px">
+                                    <f:selectItem itemValue="1" itemLabel="Activos"/>
+                                    <f:selectItem itemValue="2" itemLabel="Inactivos"/>
+                                    <f:selectItem itemValue="3" itemLabel="Todos"/>
+                                    <p:ajax listener="#{proveedorC.listadoProveedor()}" update="MostrarProducto:tablaprov"/>
+                                </p:selectOneMenu>
+                            </center>
+                        </f:facet>
+                        <p:column headerText="RUC"  style="width: 25px ; text-align: center"  >
+                            <h:outputText value="#{tblprov.ruc}"  />
+                        </p:column> 
+                        <p:column headerText="RazonSocial" filterBy="#{tblprov.razonSocial}" style="width: 90px ; text-align: center"  >
+                            <h:outputText value="#{tblprov.razonSocial}"  />
+                        </p:column>    
+                        <p:column headerText="Email" style="width: 100px ; text-align: center" >
+                            <h:outputText value="#{tblprov.emailProveedor}"  />
+                        </p:column>  
+                        <p:column headerText="Direccion"  style="width: 65px ; text-align: center"  >
+                            <h:outputText value="#{tblprov.direccionProveedor}"  />
+                        </p:column>  
+                        <p:column headerText="Celular" style="width: 70px ; text-align: center"  >
+                            <h:outputText value="#{tblprov.celularProveedor}"  />
+                        </p:column>  
+                    </p:dataTable>
+
+                    <p:contextMenu for="tablaprov">
+                        <p:menuitem value="Modificar" icon="pi pi-pencil" oncomplete="PF('wdlgDatos').show()" update=":formModificar"/>
+                        <p:menuitem value="Eliminar" icon="pi pi-trash" actionListener="#{proveedorC.eliminar()}" update="tablaprov">
+                            <p:confirm header="Confirmación" message="¿Deseas elimnar?"/>
+                        </p:menuitem> 
+                        <p:menuitem value="Restaurar" icon="=pi pi-trash" actionListener="#{proveedorC.restaurar()}" update="tablaprov ">
+                            <p:confirm header="Confirmación" message="¿Deseas restaurar?" icon="pi pi-user-plus"/>
+                        </p:menuitem>
+                    </p:contextMenu>
+
+                    <p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
+                        <p:commandButton value="Si" type="button" styleClass="ui-confirmdialog-yes" icon="ui-icon-check"/>
+                        <p:commandButton value="No" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close"/>
+                    </p:confirmDialog>
+                </h:form>
+
+
+                <p:dialog header="Datos del Insumo" widgetVar="wdlgDatos" id="dlgDatos">
+                    <h:form id="formModificar">
+                        <p:panelGrid columns="2">
+                            <p:outputLabel value="Nombre" />
+                            <p:inputText value="#{insumoC.insumo.nombredeinsumo}" id="nombre"/>
+                            <p:outputLabel value="Precio" />
+                            <p:inputText value="#{insumoC.insumo.preciodeinsumo}"  id="Precio"/>
+                            <p:outputLabel value="Stock" />
+                            <p:inputText value="#{insumoC.insumo.stockdeinsumo}" id="stock"/>
+                            <p:outputLabel value="Tamano" />
+                            <p:outputLabel value="#{insumoC.insumo.tamañodeinsumo}"  id="tamano"/>
+                            <p:outputLabel value="Detalle" />
+                            <p:inputText value="#{insumoC.insumo.detalledeinsumo}" id="detalle"/>
+                            <p:commandButton value="Cancelar" immediate="true" oncomplete="PF('wdlgDatos').hide();" actionListener="#{proveedorC.limpiar()}" />
+                            <p:commandButton id="modicardialog" value="Modificar" actionListener="#{proveedorC.modificar()}" 
+                                             update="formModificar :MostrarProducto:tablaprov" 
+                                             oncomplete="if(!args.validationFailed)PF('wdlgDatos').hide();"/>
+                        </p:panelGrid>
+                    </h:form>
+                </p:dialog>
+            </center>
+        </h:body>
+    </ui:define>
+</ui:composition>

@@ -1,0 +1,269 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.16.0.final using JasperReports Library version 6.16.0-48579d909b7943b64690c65c71e07e0b80981928  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="BoletaV" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="1e2ff12a-a2b2-4edc-a0ae-969feb09ffc3">
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="DIONISIOORACLE"/>
+	<queryString language="SQL">
+		<![CDATA[select 
+v.idven,
+initcap(c.nomper) ||''|| initcap(c.apepatper) ||''||initcap(c.apematper) as CLIENTE,
+c.dirper,
+c.dniper,
+initcap(vend.nomper) ||''|| initcap(vend.apepatper) ||''|| initcap(vend.apematper) as VENDEDOR,
+pro.nompro,
+pro.prepro,
+pro.prepro * vd.canvendet as TOTAL,
+vd.canvendet
+from venta v
+inner join Persona c on c.idper = v.idcli
+inner join Persona vend on vend.idper = v.idvend
+inner join VENTA_DETALLE vd on vd.idven = v.idven
+inner join Producto pro on pro.idpro = vd.idpro]]>
+	</queryString>
+	<field name="IDVEN" class="java.math.BigDecimal">
+		<property name="com.jaspersoft.studio.field.name" value="IDVEN"/>
+		<property name="com.jaspersoft.studio.field.label" value="IDVEN"/>
+	</field>
+	<field name="CLIENTE" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="CLIENTE"/>
+		<property name="com.jaspersoft.studio.field.label" value="CLIENTE"/>
+	</field>
+	<field name="DIRPER" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="DIRPER"/>
+		<property name="com.jaspersoft.studio.field.label" value="DIRPER"/>
+	</field>
+	<field name="DNIPER" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="DNIPER"/>
+		<property name="com.jaspersoft.studio.field.label" value="DNIPER"/>
+	</field>
+	<field name="VENDEDOR" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="VENDEDOR"/>
+		<property name="com.jaspersoft.studio.field.label" value="VENDEDOR"/>
+	</field>
+	<field name="NOMPRO" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="NOMPRO"/>
+		<property name="com.jaspersoft.studio.field.label" value="NOMPRO"/>
+	</field>
+	<field name="PREPRO" class="java.math.BigDecimal">
+		<property name="com.jaspersoft.studio.field.name" value="PREPRO"/>
+		<property name="com.jaspersoft.studio.field.label" value="PREPRO"/>
+	</field>
+	<field name="TOTAL" class="java.math.BigDecimal">
+		<property name="com.jaspersoft.studio.field.name" value="TOTAL"/>
+		<property name="com.jaspersoft.studio.field.label" value="TOTAL"/>
+	</field>
+	<field name="CANVENDET" class="java.math.BigDecimal">
+		<property name="com.jaspersoft.studio.field.name" value="CANVENDET"/>
+		<property name="com.jaspersoft.studio.field.label" value="CANVENDET"/>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch">
+			<staticText>
+				<reportElement x="37" y="2" width="413" height="18" uuid="109bf240-c2b1-4458-81f1-381adf4d5798"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="11" isBold="true"/>
+				</textElement>
+				<text><![CDATA[De : Huapaya David Marleny Gloria]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="160" y="20" width="200" height="20" uuid="83766deb-a877-433e-88f9-b2ad357cf9c3"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="11"/>
+				</textElement>
+				<text><![CDATA[Venta de todo tipo de vino]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="90" y="40" width="340" height="20" uuid="939fbc22-dc40-4e83-8af4-48e1023191fe"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="11" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Fnd. Santa Elvira Almenares S/N Nuevo Imperial - Cañete - Lima]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="130" y="60" width="250" height="19" uuid="4ae4d812-c15a-460d-9d6d-dee73ce8cd42"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="11"/>
+				</textElement>
+				<text><![CDATA[Celular : 934692267]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="480" y="2" width="80" height="36" uuid="9d60bb44-6d6b-4e3d-8984-33ebb0a1ee02"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="11"/>
+				</textElement>
+				<text><![CDATA[Boleta de venta]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="504" y="40" width="40" height="30" uuid="6d335680-c80b-4d95-b15e-8c7ee1a4518f">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="4e0b4413-1650-4eb7-aea3-4ea38c0eb15a"/>
+				</reportElement>
+				<textFieldExpression><![CDATA[$F{IDVEN}]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="107" splitType="Stretch">
+			<staticText>
+				<reportElement x="10" y="0" width="60" height="20" uuid="69f24cf0-f89b-479e-8a8c-bbe7a3f52b40"/>
+				<textElement textAlignment="Right">
+					<font size="11"/>
+				</textElement>
+				<text><![CDATA[Fecha :]]></text>
+			</staticText>
+			<textField pattern="M/d/yy h:mm a">
+				<reportElement x="80" y="0" width="110" height="20" uuid="2963d2f7-e710-4479-804d-116b999c017b"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="80" y="20" width="110" height="1" uuid="0804f448-392a-41d6-b5b3-038af8c3d3e0"/>
+				<graphicElement>
+					<pen lineStyle="Dotted"/>
+				</graphicElement>
+			</line>
+			<staticText>
+				<reportElement x="12" y="30" width="57" height="20" uuid="c006fea7-1c14-4595-8fa2-659553b81ab8">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="590412f2-0c47-4920-8939-ed6d06ee962f"/>
+				</reportElement>
+				<text><![CDATA[Vendedor:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="80" y="30" width="130" height="20" uuid="ce400a18-f6e4-40ad-8bf5-b4f49688c073">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="590412f2-0c47-4920-8939-ed6d06ee962f"/>
+				</reportElement>
+				<textFieldExpression><![CDATA[$F{VENDEDOR}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="23" y="101" width="516" height="1" uuid="957fe6af-ec77-4529-bc12-fa267e3354e1"/>
+			</line>
+			<staticText>
+				<reportElement x="40" y="60" width="22" height="13" uuid="b7c58346-42dc-47f7-a833-d0df656c2748">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="b4d887c7-473f-4643-abc8-6f0d9f7b8cc9"/>
+				</reportElement>
+				<text><![CDATA[Dni:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="80" y="58" width="100" height="22" uuid="acf55055-4c6a-4174-a82b-f428421d373f">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="b4d887c7-473f-4643-abc8-6f0d9f7b8cc9"/>
+				</reportElement>
+				<textFieldExpression><![CDATA[$F{DNIPER}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="290" y="7" width="60" height="23" uuid="0bfcda12-a52b-4068-b532-464e8c1a3e48">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="c9e72a0e-6cba-41c1-9b11-83fe79791e27"/>
+				</reportElement>
+				<text><![CDATA[Direccion:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="360" y="8" width="100" height="22" uuid="53f9fff0-b3ac-4724-993e-200622f6d65c">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="c9e72a0e-6cba-41c1-9b11-83fe79791e27"/>
+				</reportElement>
+				<textFieldExpression><![CDATA[$F{DIRPER}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="300" y="37" width="40" height="13" uuid="299766f3-b4b7-498d-bed1-b529a7f8db8e">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="2428b15e-2974-4720-9fde-92b9812aaeef"/>
+				</reportElement>
+				<text><![CDATA[Cliente:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="360" y="38" width="120" height="20" uuid="54be7496-0c2b-4e30-8c0a-961bdef0be39">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="2428b15e-2974-4720-9fde-92b9812aaeef"/>
+				</reportElement>
+				<textFieldExpression><![CDATA[$F{CLIENTE}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="70" splitType="Stretch">
+			<staticText>
+				<reportElement x="12" y="0" width="100" height="30" uuid="84036884-a8e9-48bc-a70b-cb9eaa1b2b85">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="cd06ca3d-a561-4b64-9558-8c978682cf53"/>
+				</reportElement>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[Descripcion]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="12" y="30" width="100" height="30" uuid="e06f601b-2cde-498a-a16f-02e2937a0d9c">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="cd06ca3d-a561-4b64-9558-8c978682cf53"/>
+				</reportElement>
+				<textFieldExpression><![CDATA[$F{NOMPRO}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="130" y="1" width="100" height="30" uuid="bf090890-e882-4056-86ca-bb82fb1d2156">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="affb0c22-ef9f-457b-8b6d-fa6a3d19a17f"/>
+				</reportElement>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[Cantidad]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="280" y="0" width="100" height="30" uuid="ebb431d2-a252-4630-85d6-f19c2c304417">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="5d7ba349-0075-4bb1-9f65-2eda85979219"/>
+				</reportElement>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[Precio]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="430" y="0" width="100" height="30" uuid="c6a88ff3-c123-4fd8-ad3f-64e5bf0c8060">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="4c1efc90-dbf0-421e-8328-dba3c843dc75"/>
+				</reportElement>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[Total]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="160" y="30" width="40" height="30" uuid="c06d296f-20c8-4a1d-91ad-33674c62e28c">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="affb0c22-ef9f-457b-8b6d-fa6a3d19a17f"/>
+				</reportElement>
+				<textFieldExpression><![CDATA[$F{CANVENDET}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="320" y="30" width="50" height="30" uuid="4e2ffeb9-b449-4683-88f2-9048d2f90548">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="5d7ba349-0075-4bb1-9f65-2eda85979219"/>
+				</reportElement>
+				<textFieldExpression><![CDATA[$F{PREPRO}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="459" y="30" width="50" height="30" uuid="0f6c8783-d756-44aa-834a-043eb7b10e4f">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="4c1efc90-dbf0-421e-8328-dba3c843dc75"/>
+				</reportElement>
+				<textFieldExpression><![CDATA[$F{TOTAL}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="296" y="31" width="24" height="30" uuid="f7d7fe0f-dfc1-4546-84e4-ce8553252fc5"/>
+				<text><![CDATA[S/.]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="26" splitType="Stretch"/>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="85" splitType="Stretch">
+			<staticText>
+				<reportElement x="110" y="0" width="349" height="54" uuid="7bd42acc-fcba-44e9-a9c6-33620a16db06"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="11"/>
+				</textElement>
+				<text><![CDATA[Esta boleta fue elaborado en Valle Grande , por el equipo Dionisio , y es una simulación de un comprobante de venta , se realizó unicamente con fines academicos.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="237" y="67" width="80" height="15" uuid="2c7ba322-7700-4a75-9ff7-65b7bd48c0cf"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="11"/>
+				</textElement>
+				<text><![CDATA[Copyright ©]]></text>
+			</staticText>
+		</band>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>
